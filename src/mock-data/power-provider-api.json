@@ -1,0 +1,228 @@
+{
+  "version": "3.0",
+  "exportTimestamp": 1743498000,
+  "consumptionRecords": [
+    {
+      "recordId": 1001,
+      "facilityCode": "DEPOT-TKY-A",
+      "timestampUnix": 1743494400,
+      "periodMinutes": 15,
+      "powerKw": 95.7,
+      "energyKwh": 23.925,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 1002,
+      "facilityCode": "DEPOT-TKY-A",
+      "timestampUnix": 1743495300,
+      "periodMinutes": 15,
+      "powerKw": 98.2,
+      "energyKwh": 24.55,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 1003,
+      "facilityCode": "DEPOT-TKY-A",
+      "timestampUnix": 1743496200,
+      "periodMinutes": 15,
+      "powerKw": 45.0,
+      "energyKwh": 11.25,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 1004,
+      "facilityCode": "DEPOT-TKY-A",
+      "timestampUnix": 1743497100,
+      "periodMinutes": 15,
+      "powerKw": 95.5,
+      "energyKwh": 23.875,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 2001,
+      "facilityCode": "DEPOT-YKH-B",
+      "timestampUnix": 1743494400,
+      "periodMinutes": 15,
+      "powerKw": 0,
+      "energyKwh": 0,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 2002,
+      "facilityCode": "DEPOT-YKH-B",
+      "timestampUnix": 1743495300,
+      "periodMinutes": 15,
+      "powerKw": 0,
+      "energyKwh": 0,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 2003,
+      "facilityCode": "DEPOT-YKH-B",
+      "timestampUnix": 1743496200,
+      "periodMinutes": 15,
+      "powerKw": 0,
+      "energyKwh": 0,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 2004,
+      "facilityCode": "DEPOT-YKH-B",
+      "timestampUnix": 1743497100,
+      "periodMinutes": 15,
+      "powerKw": 0,
+      "energyKwh": 0,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 3001,
+      "facilityCode": "DEPOT-CHB-C",
+      "timestampUnix": 1743494400,
+      "periodMinutes": 15,
+      "powerKw": 185.0,
+      "energyKwh": 46.25,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 3002,
+      "facilityCode": "DEPOT-CHB-C",
+      "timestampUnix": 1743495300,
+      "periodMinutes": 15,
+      "powerKw": 188.5,
+      "energyKwh": 47.125,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 3003,
+      "facilityCode": "DEPOT-CHB-C",
+      "timestampUnix": 1743496200,
+      "periodMinutes": 15,
+      "powerKw": 182.0,
+      "energyKwh": 45.5,
+      "tariffCategory": "standard"
+    },
+    {
+      "recordId": 3004,
+      "facilityCode": "DEPOT-CHB-C",
+      "timestampUnix": 1743497100,
+      "periodMinutes": 15,
+      "powerKw": 185.0,
+      "energyKwh": 46.25,
+      "tariffCategory": "standard"
+    }
+  ],
+  "tariffs": [
+    {
+      "tariffId": 101,
+      "category": "peak",
+      "pricePerKwh": 42.5,
+      "validFrom": 1711929600,
+      "validTo": null,
+      "notes": "Summer peak rate - weekdays 13:00-16:00 JST"
+    },
+    {
+      "tariffId": 102,
+      "category": "standard",
+      "pricePerKwh": 28.0,
+      "validFrom": 1711929600,
+      "validTo": null,
+      "notes": "Standard rate - weekdays 08:00-13:00, 16:00-22:00 JST"
+    },
+    {
+      "tariffId": 103,
+      "category": "off_peak",
+      "pricePerKwh": 18.5,
+      "validFrom": 1711929600,
+      "validTo": null,
+      "notes": "Off-peak rate - 22:00-08:00 JST and weekends"
+    }
+  ],
+  "facilityMappings": [
+    {
+      "facilityCode": "DEPOT-TKY-A",
+      "contractId": "TEPCO-2024-001542",
+      "maxContractedPowerKw": 150,
+      "meterNumber": "TKY-E-88421"
+    },
+    {
+      "facilityCode": "DEPOT-YKH-B",
+      "contractId": "TEPCO-2024-001891",
+      "maxContractedPowerKw": 100,
+      "meterNumber": "YKH-E-77532"
+    },
+    {
+      "facilityCode": "DEPOT-CHB-C",
+      "contractId": "TEPCO-2024-002103",
+      "maxContractedPowerKw": 200,
+      "meterNumber": "CHB-E-99614"
+    }
+  ],
+  "dailyAggregates": [
+    {
+      "facilityCode": "DEPOT-TKY-A",
+      "date": "2026-04-01",
+      "totalEnergyKwh": 156.8,
+      "peakPowerKw": 98.5,
+      "avgPowerKw": 52.3,
+      "peakTariffEnergyKwh": 42.5,
+      "standardTariffEnergyKwh": 78.3,
+      "offPeakTariffEnergyKwh": 36.0,
+      "estimatedCostJpy": 4820
+    },
+    {
+      "facilityCode": "DEPOT-YKH-B",
+      "date": "2026-04-01",
+      "totalEnergyKwh": 35.2,
+      "peakPowerKw": 74.0,
+      "avgPowerKw": 11.7,
+      "peakTariffEnergyKwh": 0,
+      "standardTariffEnergyKwh": 35.2,
+      "offPeakTariffEnergyKwh": 0,
+      "estimatedCostJpy": 986
+    },
+    {
+      "facilityCode": "DEPOT-CHB-C",
+      "date": "2026-04-01",
+      "totalEnergyKwh": 245.6,
+      "peakPowerKw": 195.0,
+      "avgPowerKw": 81.9,
+      "peakTariffEnergyKwh": 55.2,
+      "standardTariffEnergyKwh": 138.4,
+      "offPeakTariffEnergyKwh": 52.0,
+      "estimatedCostJpy": 7182
+    },
+    {
+      "facilityCode": "DEPOT-TKY-A",
+      "date": "2026-03-31",
+      "totalEnergyKwh": 182.4,
+      "peakPowerKw": 100.0,
+      "avgPowerKw": 60.8,
+      "peakTariffEnergyKwh": 48.0,
+      "standardTariffEnergyKwh": 86.4,
+      "offPeakTariffEnergyKwh": 48.0,
+      "estimatedCostJpy": 5547
+    },
+    {
+      "facilityCode": "DEPOT-YKH-B",
+      "date": "2026-03-31",
+      "totalEnergyKwh": 38.5,
+      "peakPowerKw": 74.5,
+      "avgPowerKw": 12.8,
+      "peakTariffEnergyKwh": 0,
+      "standardTariffEnergyKwh": 38.5,
+      "offPeakTariffEnergyKwh": 0,
+      "estimatedCostJpy": 1078
+    },
+    {
+      "facilityCode": "DEPOT-CHB-C",
+      "date": "2026-03-31",
+      "totalEnergyKwh": 198.2,
+      "peakPowerKw": 192.0,
+      "avgPowerKw": 66.1,
+      "peakTariffEnergyKwh": 45.0,
+      "standardTariffEnergyKwh": 108.2,
+      "offPeakTariffEnergyKwh": 45.0,
+      "estimatedCostJpy": 5774
+    }
+  ]
+}

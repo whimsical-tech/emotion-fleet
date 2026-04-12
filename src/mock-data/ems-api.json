@@ -1,0 +1,126 @@
+{
+  "api_version": "1.0",
+  "generated_at": "2026-04-01T09:00:00Z",
+  "facilities": [
+    {
+      "facility_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "name": "Tokyo Depot Alpha",
+      "location": {
+        "address": "1-2-3 Koto, Koto-ku, Tokyo 135-0016",
+        "latitude": 35.6762,
+        "longitude": 139.8171
+      },
+      "total_capacity_kw": 150,
+      "external_refs": {
+        "fms_facility_ref": "FACILITY-TKY-ALPHA",
+        "power_provider_code": "DEPOT-TKY-A"
+      },
+      "chargers": [
+        {
+          "charger_id": "c1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c",
+          "external_ref": "CHG-TKY-01",
+          "model": "ABB Terra 184",
+          "max_power_kw": 50,
+          "status": "IN_USE",
+          "current_power_kw": 47.5,
+          "last_status_update": "2026-04-01T08:45:00Z"
+        },
+        {
+          "charger_id": "d2b3c4d5-e6f7-5a8b-9c0d-1e2f3a4b5c6d",
+          "external_ref": "CHG-TKY-02",
+          "model": "ABB Terra 184",
+          "max_power_kw": 50,
+          "status": "AVAILABLE",
+          "current_power_kw": null,
+          "last_status_update": "2026-04-01T08:30:00Z"
+        },
+        {
+          "charger_id": "e3c4d5e6-f7a8-6b9c-0d1e-2f3a4b5c6d7e",
+          "external_ref": "CHG-TKY-03",
+          "model": "ABB Terra 124",
+          "max_power_kw": 50,
+          "status": "IN_USE",
+          "current_power_kw": 48.2,
+          "last_status_update": "2026-04-01T08:50:00Z"
+        }
+      ]
+    },
+    {
+      "facility_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "name": "Yokohama Depot Beta",
+      "location": {
+        "address": "4-5-6 Nishi, Nishi-ku, Yokohama 220-0005",
+        "latitude": 35.4657,
+        "longitude": 139.6201
+      },
+      "total_capacity_kw": 100,
+      "external_refs": {
+        "fms_facility_ref": "FACILITY-YKH-BETA",
+        "power_provider_code": "DEPOT-YKH-B"
+      },
+      "chargers": [
+        {
+          "charger_id": "f4d5e6f7-a8b9-7c0d-1e2f-3a4b5c6d7e8f",
+          "external_ref": "CHG-YKH-01",
+          "model": "Tritium RTM75",
+          "max_power_kw": 75,
+          "status": "AVAILABLE",
+          "current_power_kw": null,
+          "last_status_update": "2026-04-01T08:00:00Z"
+        },
+        {
+          "charger_id": "a5e6f7a8-b9c0-8d1e-2f3a-4b5c6d7e8f9a",
+          "external_ref": "CHG-YKH-02",
+          "model": "Tritium RTM75",
+          "max_power_kw": 75,
+          "status": "MAINTENANCE",
+          "current_power_kw": null,
+          "last_status_update": "2026-03-30T14:00:00Z"
+        }
+      ]
+    },
+    {
+      "facility_id": "b2c3d4e5-f6a7-5b8c-9d0e-1f2a3b4c5d6e",
+      "name": "Chiba Logistics Hub",
+      "location": {
+        "address": "7-8-9 Mihama, Mihama-ku, Chiba 261-0001",
+        "latitude": 35.6364,
+        "longitude": 140.0594
+      },
+      "total_capacity_kw": 200,
+      "external_refs": {
+        "fms_facility_ref": "FACILITY-CHB-HUB",
+        "power_provider_code": "DEPOT-CHB-C"
+      },
+      "chargers": [
+        {
+          "charger_id": "b6f7a8b9-c0d1-9e2f-3a4b-5c6d7e8f9a0b",
+          "external_ref": "CHG-CHB-01",
+          "model": "Delta UFC 200",
+          "max_power_kw": 200,
+          "status": "IN_USE",
+          "current_power_kw": 185.0,
+          "last_status_update": "2026-04-01T08:55:00Z"
+        },
+        {
+          "charger_id": "c7a8b9c0-d1e2-0f3a-4b5c-6d7e8f9a0b1c",
+          "external_ref": "CHG-CHB-02",
+          "model": "ABB Terra 184",
+          "max_power_kw": 50,
+          "status": "OFFLINE",
+          "current_power_kw": null,
+          "last_status_update": "2026-03-31T22:15:00Z"
+        },
+        {
+          "charger_id": "d8b9c0d1-e2f3-1a4b-5c6d-7e8f9a0b1c2d",
+          "external_ref": "CHG-CHB-03",
+          "model": "ABB Terra 184",
+          "max_power_kw": 50,
+          "status": "AVAILABLE",
+          "current_power_kw": null,
+          "last_status_update": "2026-04-01T07:30:00Z"
+        }
+      ]
+    }
+  ]
+}

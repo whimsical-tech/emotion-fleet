@@ -1,0 +1,239 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--primary-dark);
+}
+
+.header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 16px;
+  color: var(--gray-500);
+}
+
+.emptyState {
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.emptyState p {
+  font-size: 16px;
+  color: var(--gray-500);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.table thead {
+  background-color: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--gray-100);
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--gray-50);
+}
+
+.table td {
+  padding: 16px;
+  font-size: 14px;
+  color: var(--gray-900);
+}
+
+.sessionId {
+  font-family: "Monaco", "Courier New", monospace;
+  font-size: 12px;
+  color: var(--gray-600);
+}
+
+.vehicleInfo,
+.chargerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vehiclePlate,
+.chargerId {
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.vehicleModel,
+.chargerModel {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.timestamp {
+  font-family: "Monaco", "Courier New", monospace;
+  font-size: 12px;
+  color: var(--gray-600);
+}
+
+.duration {
+  color: var(--gray-700);
+}
+
+.energy {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.statusCompleted {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.statusInProgress {
+  background-color: #dbeafe;
+  color: #0c4a6e;
+}
+
+.statusInterrupted {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.statusFailed {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.statusDefault {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.summaryStats {
+  display: grid;
+  width: 30vw;
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+}
+
+.summaryStat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.summaryLabel {
+  font-size: 12px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.summaryValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.completed {
+  color: var(--success);
+}
+
+.inProgress {
+  color: var(--primary-color);
+}
+
+.loadingState,
+.errorState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loadingState p {
+  font-size: 16px;
+  color: var(--gray-500);
+}
+
+.errorState {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.errorState h2 {
+  color: var(--error);
+  font-size: 20px;
+}
+
+.errorState p {
+  color: var(--gray-600);
+  font-size: 14px;
+}

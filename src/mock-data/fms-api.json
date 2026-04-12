@@ -1,0 +1,393 @@
+{
+  "apiVersion": "2.1",
+  "generatedAt": "2026-04-01 18:00:00 JST",
+  "vehicles": [
+    {
+      "vehicleId": "VH-001",
+      "licensePlate": "品川 500 あ 1234",
+      "model": "BYD T3",
+      "batteryCapacityWh": 50500,
+      "currentBatteryPercent": 85,
+      "status": "available"
+    },
+    {
+      "vehicleId": "VH-002",
+      "licensePlate": "品川 500 い 5678",
+      "model": "BYD T3",
+      "batteryCapacityWh": 50500,
+      "currentBatteryPercent": 23,
+      "status": "charging"
+    },
+    {
+      "vehicleId": "VH-003",
+      "licensePlate": "横浜 500 う 9012",
+      "model": "Nissan e-NV200",
+      "batteryCapacityWh": 40000,
+      "currentBatteryPercent": null,
+      "status": "in_transit"
+    },
+    {
+      "vehicleId": "VH-004",
+      "licensePlate": "横浜 500 え 3456",
+      "model": "Nissan e-NV200",
+      "batteryCapacityWh": 40000,
+      "currentBatteryPercent": 92,
+      "status": "available"
+    },
+    {
+      "vehicleId": "VH-005",
+      "licensePlate": "千葉 500 お 7890",
+      "model": "Mitsubishi eCanter",
+      "batteryCapacityWh": 83000,
+      "currentBatteryPercent": 15,
+      "status": "charging"
+    },
+    {
+      "vehicleId": "VH-006",
+      "licensePlate": "千葉 500 か 1357",
+      "model": "Mitsubishi eCanter",
+      "batteryCapacityWh": 83000,
+      "currentBatteryPercent": 67,
+      "status": "available"
+    },
+    {
+      "vehicleId": "VH-007",
+      "licensePlate": "品川 500 き 2468",
+      "model": "BYD T3",
+      "batteryCapacityWh": 50500,
+      "currentBatteryPercent": 45,
+      "status": "charging"
+    },
+    {
+      "vehicleId": "VH-008",
+      "licensePlate": "千葉 500 く 8024",
+      "model": "Mitsubishi eCanter",
+      "batteryCapacityWh": 83000,
+      "currentBatteryPercent": null,
+      "status": "offline"
+    }
+  ],
+  "chargingSessions": [
+    {
+      "sessionId": "CS-20260401-001",
+      "vehicleId": "VH-002",
+      "chargerIdentifier": "CHG-TKY-01",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-04-01 17:30:00 JST",
+      "endTime": null,
+      "energyDeliveredWh": 15000,
+      "maxPowerW": 47500,
+      "status": "in_progress"
+    },
+    {
+      "sessionId": "CS-20260401-002",
+      "vehicleId": "VH-007",
+      "chargerIdentifier": "CHG-TKY-03",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-04-01 17:45:00 JST",
+      "endTime": null,
+      "energyDeliveredWh": 8500,
+      "maxPowerW": 48200,
+      "status": "in_progress"
+    },
+    {
+      "sessionId": "CS-20260401-003",
+      "vehicleId": "VH-005",
+      "chargerIdentifier": "CHG-CHB-01",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-04-01 17:50:00 JST",
+      "endTime": null,
+      "energyDeliveredWh": 25000,
+      "maxPowerW": 185000,
+      "status": "in_progress"
+    },
+    {
+      "sessionId": "CS-20260401-004",
+      "vehicleId": "VH-001",
+      "chargerIdentifier": "CHG-TKY-02",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-04-01 14:00:00 JST",
+      "endTime": "2026-04-01 16:30:00 JST",
+      "energyDeliveredWh": 42500,
+      "maxPowerW": 50000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260401-005",
+      "vehicleId": "VH-004",
+      "chargerIdentifier": "CHG-YKH-01",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-04-01 10:00:00 JST",
+      "endTime": "2026-04-01 12:15:00 JST",
+      "energyDeliveredWh": 35200,
+      "maxPowerW": 72000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260401-006",
+      "vehicleId": "VH-006",
+      "chargerIdentifier": "CHG-CHB-03",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-04-01 06:00:00 JST",
+      "endTime": "2026-04-01 08:30:00 JST",
+      "energyDeliveredWh": 52000,
+      "maxPowerW": 48500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260331-001",
+      "vehicleId": "VH-002",
+      "chargerIdentifier": "CHG-TKY-01",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-31 22:00:00 JST",
+      "endTime": "2026-04-01 01:30:00 JST",
+      "energyDeliveredWh": 48000,
+      "maxPowerW": 49500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260331-002",
+      "vehicleId": "VH-003",
+      "chargerIdentifier": "CHG-YKH-01",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-31 19:00:00 JST",
+      "endTime": "2026-03-31 21:00:00 JST",
+      "energyDeliveredWh": 38500,
+      "maxPowerW": 74000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260331-003",
+      "vehicleId": "VH-005",
+      "chargerIdentifier": "CHG-CHB-01",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-31 14:00:00 JST",
+      "endTime": "2026-03-31 15:30:00 JST",
+      "energyDeliveredWh": 62000,
+      "maxPowerW": 190000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260331-004",
+      "vehicleId": "VH-007",
+      "chargerIdentifier": "CHG-TKY-02",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-31 09:30:00 JST",
+      "endTime": "2026-03-31 11:45:00 JST",
+      "energyDeliveredWh": 44000,
+      "maxPowerW": 50000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260331-005",
+      "vehicleId": "VH-001",
+      "chargerIdentifier": "CHG-TKY-03",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-31 06:00:00 JST",
+      "endTime": "2026-03-31 08:00:00 JST",
+      "energyDeliveredWh": 40000,
+      "maxPowerW": 48000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260330-001",
+      "vehicleId": "VH-006",
+      "chargerIdentifier": "CHG-CHB-02",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-30 20:00:00 JST",
+      "endTime": "2026-03-30 22:30:00 JST",
+      "energyDeliveredWh": 55000,
+      "maxPowerW": 49000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260330-002",
+      "vehicleId": "VH-004",
+      "chargerIdentifier": "CHG-YKH-02",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-30 15:00:00 JST",
+      "endTime": null,
+      "energyDeliveredWh": 12000,
+      "maxPowerW": 70000,
+      "status": "interrupted",
+      "interruptReason": "Charger fault - maintenance required"
+    },
+    {
+      "sessionId": "CS-20260330-003",
+      "vehicleId": "VH-002",
+      "chargerIdentifier": "CHG-TKY-01",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-30 11:00:00 JST",
+      "endTime": "2026-03-30 13:30:00 JST",
+      "energyDeliveredWh": 47500,
+      "maxPowerW": 50000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260330-004",
+      "vehicleId": "VH-005",
+      "chargerIdentifier": "CHG-CHB-01",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-30 08:00:00 JST",
+      "endTime": "2026-03-30 09:00:00 JST",
+      "energyDeliveredWh": 70000,
+      "maxPowerW": 195000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260329-001",
+      "vehicleId": "VH-003",
+      "chargerIdentifier": "CHG-YKH-01",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-29 18:00:00 JST",
+      "endTime": "2026-03-29 20:30:00 JST",
+      "energyDeliveredWh": 39000,
+      "maxPowerW": 73000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260329-002",
+      "vehicleId": "VH-001",
+      "chargerIdentifier": "CHG-TKY-02",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-29 14:00:00 JST",
+      "endTime": "2026-03-29 16:00:00 JST",
+      "energyDeliveredWh": 41000,
+      "maxPowerW": 49500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260329-003",
+      "vehicleId": "VH-007",
+      "chargerIdentifier": "CHG-TKY-03",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-29 10:00:00 JST",
+      "endTime": "2026-03-29 12:30:00 JST",
+      "energyDeliveredWh": 46000,
+      "maxPowerW": 48500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260329-004",
+      "vehicleId": "VH-006",
+      "chargerIdentifier": "CHG-CHB-03",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-29 06:00:00 JST",
+      "endTime": "2026-03-29 09:00:00 JST",
+      "energyDeliveredWh": 58000,
+      "maxPowerW": 47000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260328-001",
+      "vehicleId": "VH-004",
+      "chargerIdentifier": "CHG-YKH-01",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-28 21:00:00 JST",
+      "endTime": "2026-03-28 23:30:00 JST",
+      "energyDeliveredWh": 37000,
+      "maxPowerW": 74500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260328-002",
+      "vehicleId": "VH-002",
+      "chargerIdentifier": "CHG-TKY-01",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-28 16:00:00 JST",
+      "endTime": "2026-03-28 18:30:00 JST",
+      "energyDeliveredWh": 49000,
+      "maxPowerW": 50000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260328-003",
+      "vehicleId": "VH-005",
+      "chargerIdentifier": "CHG-CHB-01",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-28 12:00:00 JST",
+      "endTime": "2026-03-28 13:15:00 JST",
+      "energyDeliveredWh": 68000,
+      "maxPowerW": 188000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260328-004",
+      "vehicleId": "VH-008",
+      "chargerIdentifier": "CHG-CHB-02",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-28 08:00:00 JST",
+      "endTime": null,
+      "energyDeliveredWh": 5000,
+      "maxPowerW": 35000,
+      "status": "failed",
+      "failureReason": "Vehicle communication lost"
+    },
+    {
+      "sessionId": "CS-20260327-001",
+      "vehicleId": "VH-001",
+      "chargerIdentifier": "CHG-TKY-01",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-27 19:00:00 JST",
+      "endTime": "2026-03-27 21:30:00 JST",
+      "energyDeliveredWh": 43500,
+      "maxPowerW": 49000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260327-002",
+      "vehicleId": "VH-003",
+      "chargerIdentifier": "CHG-YKH-01",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-27 14:00:00 JST",
+      "endTime": "2026-03-27 16:30:00 JST",
+      "energyDeliveredWh": 38000,
+      "maxPowerW": 72500,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260327-003",
+      "vehicleId": "VH-006",
+      "chargerIdentifier": "CHG-CHB-01",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-27 09:00:00 JST",
+      "endTime": "2026-03-27 11:00:00 JST",
+      "energyDeliveredWh": 54000,
+      "maxPowerW": 182000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260326-001",
+      "vehicleId": "VH-007",
+      "chargerIdentifier": "CHG-TKY-02",
+      "facilityRef": "FACILITY-TKY-ALPHA",
+      "startTime": "2026-03-26 20:00:00 JST",
+      "endTime": "2026-03-26 22:30:00 JST",
+      "energyDeliveredWh": 45000,
+      "maxPowerW": 50000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260326-002",
+      "vehicleId": "VH-004",
+      "chargerIdentifier": "CHG-YKH-02",
+      "facilityRef": "FACILITY-YKH-BETA",
+      "startTime": "2026-03-26 15:00:00 JST",
+      "endTime": "2026-03-26 17:00:00 JST",
+      "energyDeliveredWh": 36500,
+      "maxPowerW": 73000,
+      "status": "completed"
+    },
+    {
+      "sessionId": "CS-20260326-003",
+      "vehicleId": "VH-005",
+      "chargerIdentifier": "CHG-CHB-03",
+      "facilityRef": "FACILITY-CHB-HUB",
+      "startTime": "2026-03-26 10:00:00 JST",
+      "endTime": "2026-03-26 13:00:00 JST",
+      "energyDeliveredWh": 61000,
+      "maxPowerW": 48000,
+      "status": "completed"
+    }
+  ]
+}
