@@ -82,12 +82,18 @@ export default function Dashboard() {
                 <div className={styles.progressBar}>
                   <div
                     className={styles.progressFill}
+                    data-testid={`progress-${facility.id}`}
                     style={{
-                      width: `${Math.min(
-                        (facility.currentLoadKw / facility.totalCapacityKw) *
-                          100,
-                        100,
-                      )}%`,
+                      width: `${
+                        facility.totalCapacityKw === 0
+                          ? 0
+                          : Math.min(
+                              (facility.currentLoadKw /
+                                facility.totalCapacityKw) *
+                                100,
+                              100,
+                            )
+                      }%`,
                     }}
                   />
                 </div>

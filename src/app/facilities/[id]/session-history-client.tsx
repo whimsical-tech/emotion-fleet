@@ -22,8 +22,6 @@ export default function SessionHistoryClient({
 
   const [loading, setLoading] = useState(false);
 
-  /* TODO: what would a "refetching" strategy look like? */
-
   const getStatusBadgeClass = (status: string) => {
     switch (status) {
       case "completed":
@@ -54,7 +52,7 @@ export default function SessionHistoryClient({
         </Link>
         <div className={styles.errorState}>
           <h2>Error</h2>
-          <p>{error}</p>
+          <p>{initialError}</p>
         </div>
       </div>
     );
@@ -79,13 +77,19 @@ export default function SessionHistoryClient({
         <div className={styles.summaryStats}>
           <div className={styles.summaryStat}>
             <span className={styles.summaryLabel}>Total Sessions</span>
-            <span className={styles.summaryValue}>
+            <span
+              data-testid="summary-total-count"
+              className={styles.summaryValue}
+            >
               {initialSessions.length}
             </span>
           </div>
           <div className={styles.summaryStat}>
             <span className={styles.summaryLabel}>Completed</span>
-            <span className={`${styles.summaryValue} ${styles.completed}`}>
+            <span
+              data-testid="summary-completed-count"
+              className={`${styles.summaryValue} ${styles.completed}`}
+            >
               {completedCount}
             </span>
           </div>
