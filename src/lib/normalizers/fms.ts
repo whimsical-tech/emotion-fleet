@@ -1,4 +1,10 @@
 import { FMSChargingSession, NormalizedSession } from "@/lib/types";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
+dayjs.extend(customParseFormat);
+dayjs.extend(utc);
 
 /**
  * Normalize FMS charging session to domain model
@@ -46,19 +52,21 @@ export function normalizeFMSSession(
 /**
  * Parse JST timestamp string to UTC Date
  *
- * Input format: "2026-04-01 17:00:00 JST"
- * JST is UTC+9, so we subtract 9 hours to convert to UTC
- *
  */
-export function parseJSTtoUTC(jstString: string): Date {
-  // Remove " JST" suffix
-  const dateString = jstString.replace(" JST", "");
+export function parseJSTtoUTC(jstString: string): Date | null {
+  if (!jstString) return null;
 
-  // Parse as local time (JavaScript treats it as local timezone)
-  const localDate = new Date(dateString);
+  const dateString = jstString.replace(" JST", "").trim();
 
-  // JST is UTC+9, so subtract 9 hours to get UTC
-  const utcDate = new Date(localDate.getTime() - 9 * 60 * 60 * 1000);
+  // Define the expected format strictly to avoid ambiguity
+  // Format: YYYY-MM-DD HH:mm:ss
+  const parsed = dayjs(dateString, "YYYY-MM-DD HH:mm:ss", true);
 
-  return utcDate;
+  if (!parsed.isValid()) {
+    console.error(`Failed to parse JST date: ${jstString}`);
+    return null;
+  }
+
+  // Convert to UTC
+  return parsed.utc().toDate();
 }

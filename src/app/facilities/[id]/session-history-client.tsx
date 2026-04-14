@@ -4,6 +4,8 @@ import { useState } from "react";
 import { NormalizedSession } from "@/lib/types";
 import Link from "next/link";
 import styles from "./session-history.module.css";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 
 interface SessionHistoryClientProps {
   initialSessions: NormalizedSession[];
@@ -16,10 +18,9 @@ export default function SessionHistoryClient({
   facilityName,
   initialError,
 }: SessionHistoryClientProps) {
-  const [sessions, setSessions] =
-    useState<NormalizedSession[]>(initialSessions);
+  dayjs.extend(utc);
+
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(initialError);
 
   /* TODO: what would a "refetching" strategy look like? */
 
@@ -38,14 +39,14 @@ export default function SessionHistoryClient({
     }
   };
 
-  const completedCount = sessions.filter(
+  const completedCount = initialSessions.filter(
     (s) => s.status === "completed",
   ).length;
-  const inProgressCount = sessions.filter(
+  const inProgressCount = initialSessions.filter(
     (s) => s.status === "in_progress",
   ).length;
 
-  if (error) {
+  if (initialError) {
     return (
       <div className={styles.container}>
         <Link href="/" className={styles.backLink}>
@@ -78,7 +79,9 @@ export default function SessionHistoryClient({
         <div className={styles.summaryStats}>
           <div className={styles.summaryStat}>
             <span className={styles.summaryLabel}>Total Sessions</span>
-            <span className={styles.summaryValue}>{sessions.length}</span>
+            <span className={styles.summaryValue}>
+              {initialSessions.length}
+            </span>
           </div>
           <div className={styles.summaryStat}>
             <span className={styles.summaryLabel}>Completed</span>
@@ -95,7 +98,7 @@ export default function SessionHistoryClient({
         </div>
       </header>
 
-      {sessions.length === 0 ? (
+      {initialSessions.length === 0 ? (
         <div className={styles.emptyState}>
           <p>No charging sessions found for this facility.</p>
         </div>
@@ -114,7 +117,7 @@ export default function SessionHistoryClient({
               </tr>
             </thead>
             <tbody>
-              {sessions.map((session) => (
+              {initialSessions.map((session) => (
                 <tr key={session.id}>
                   <td className={styles.sessionId}>{session.id}</td>
                   <td>
@@ -138,8 +141,10 @@ export default function SessionHistoryClient({
                     </div>
                   </td>
                   <td className={styles.timestamp}>
-                    {/* todo: do not do this during render */}
-                    {new Date(session.startTimeUtc).toLocaleString()}
+                    {session.startTimeUtc &&
+                      dayjs(session.startTimeUtc)
+                        .utc()
+                        .format("YYYY-MM-DD HH:mm:ss")}
                   </td>
                   <td className={styles.duration}>
                     {session.durationMinutes

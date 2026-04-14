@@ -12,7 +12,6 @@ export default async function SessionHistory({
     const res = await fetch(`${baseUrl}/api/facilities/${id}/sessions`, {
       next: { revalidate: 60 },
     });
-    console.log({ res });
     if (!res.ok) throw new Error("Failed to fetch sessions");
     const data = await res.json();
 

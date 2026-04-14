@@ -106,7 +106,7 @@ export interface NormalizedSession {
   chargerId: string; // external_ref from EMS
   chargerModel: string;
   facilityId: string; // fms_facility_ref
-  startTimeUtc: Date;
+  startTimeUtc: Date | null;
   endTimeUtc: Date | null;
   energyDeliveredKwh: number;
   maxPowerKw: number;
