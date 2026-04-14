@@ -189,3 +189,16 @@
   color: var(--gray-600);
   font-size: 14px;
 }
+
+.emptyState {
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.emptyState p {
+  font-size: 16px;
+  color: var(--gray-500);
+}

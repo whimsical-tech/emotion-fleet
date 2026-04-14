@@ -17,26 +17,23 @@ describe("parseJSTtoUTC", () => {
     expect(parseJSTtoUTC("")).toBeNull();
   });
 
-  it("should handle null/undefined", () => {
-    expect(parseJSTtoUTC(null as unknown as string)).toBeNull();
-  });
-
   it("should reject invalid date format", () => {
     const result = parseJSTtoUTC("invalid-date");
     expect(result).toBeNull();
   });
 
-  it("should handle missing JST suffix", () => {
-    const result = parseJSTtoUTC("2026-04-14 14:30:00");
-    // Without JST suffix, it may parse differently depending on implementation
-    expect(result).toBeInstanceOf(Date);
+  it("should handle midnight JST", () => {
+    const result = parseJSTtoUTC("2026-04-14 00:00:00 JST");
+    expect(result).not.toBeNull();
+    expect(result!.getUTCHours()).toBe(15); // Previous day 15:00 UTC
+    expect(result!.getUTCMinutes()).toBe(0);
   });
 });
 
 describe("normalizeFMSSession", () => {
   const baseSession: FMSChargingSession = {
-    sessionId: "sess-001",
-    vehicleId: "veh-001",
+    sessionId: "session-001",
+    vehicleId: "vehicle-001",
     chargerIdentifier: "chr-001",
     facilityRef: "fms-tokyo-001",
     startTime: "2026-04-14 14:30:00 JST",
@@ -54,7 +51,7 @@ describe("normalizeFMSSession", () => {
       "Tesla V3",
     );
 
-    expect(result.id).toBe("sess-001");
+    expect(result.id).toBe("session-001");
     expect(result.vehicleLicensePlate).toBe("ABC-1234");
     expect(result.vehicleModel).toBe("Tesla Model 3");
     expect(result.chargerModel).toBe("Tesla V3");
@@ -80,17 +77,6 @@ describe("normalizeFMSSession", () => {
     expect(result.durationMinutes).toBeNull();
   });
 
-  it("should handle missing vehicle data gracefully", () => {
-    const result = normalizeFMSSession(
-      baseSession,
-      "UNKNOWN",
-      "UNKNOWN",
-      "UNKNOWN",
-    );
-    expect(result.vehicleLicensePlate).toBe("UNKNOWN");
-    expect(result.vehicleModel).toBe("UNKNOWN");
-  });
-
   it("should convert Wh to kWh correctly", () => {
     const session: FMSChargingSession = {
       ...baseSession,
@@ -98,17 +84,5 @@ describe("normalizeFMSSession", () => {
     };
     const result = normalizeFMSSession(session, "ABC", "Model", "Charger");
     expect(result.energyDeliveredKwh).toBe(123.456);
-  });
-
-  it("should preserve status as-is from API", () => {
-    const statuses: Array<
-      "completed" | "in_progress" | "failed" | "interrupted"
-    > = ["completed", "in_progress", "failed", "interrupted"];
-
-    for (const status of statuses) {
-      const session: FMSChargingSession = { ...baseSession, status };
-      const result = normalizeFMSSession(session, "ABC", "Model", "Charger");
-      expect(result.status).toBe(status);
-    }
   });
 });

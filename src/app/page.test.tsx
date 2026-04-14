@@ -4,121 +4,168 @@ import Dashboard from "./page";
 import type { NormalizedFacility } from "@/lib/types";
 
 global.fetch = vi.fn();
+let mockFetch = global.fetch as ReturnType<typeof vi.fn>;
+
+const mockFacility: NormalizedFacility = {
+  id: "fac-001",
+  fmsRef: "fms-tokyo-001",
+  name: "Tokyo Station",
+  address: "1-1-1 Chiyoda",
+  coordinates: { lat: 35.6812, lng: 139.7671 },
+  totalCapacityKw: 150,
+  chargers: [],
+  currentLoadKw: 75,
+  chargerStats: { available: 2, inUse: 1, offline: 0, maintenance: 0 },
+};
+
+const mockFacility2: NormalizedFacility = {
+  id: "fac-002",
+  fmsRef: "fms-osaka-001",
+  name: "Osaka Station",
+  address: "2-2-2 Chuo",
+  coordinates: { lat: 34.733, lng: 135.5023 },
+  totalCapacityKw: 200,
+  chargers: [],
+  currentLoadKw: 100,
+  chargerStats: { available: 3, inUse: 2, offline: 1, maintenance: 0 },
+};
 
 describe("Dashboard", () => {
-  const mockFacilities: NormalizedFacility[] = [
-    {
-      id: "fac-001",
-      fmsRef: "fms-tokyo-001",
-      name: "Tokyo Station",
-      address: "1-1-1 Chiyoda",
-      coordinates: { lat: 35.6812, lng: 139.7671 },
-      totalCapacityKw: 150,
-      chargers: [],
-      currentLoadKw: 75,
-      chargerStats: { available: 2, inUse: 1, offline: 0, maintenance: 0 },
-    },
-  ];
-
   beforeEach(() => {
     vi.clearAllMocks();
     global.fetch = vi.fn();
+    mockFetch = global.fetch as ReturnType<typeof vi.fn>;
   });
 
   afterEach(() => {
-    vi.restoreAllMocks(); // Ensures clean state
+    vi.restoreAllMocks();
   });
 
-  it("should show loading state initially", () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockReturnValue(
-      new Promise(() => {}),
-    );
+  describe("loading and error states", () => {
+    it("should show loading state initially", () => {
+      mockFetch.mockReturnValue(new Promise(() => {}));
 
-    render(<Dashboard />);
-    expect(screen.getByText("Loading facilities...")).toBeInTheDocument();
-  });
-
-  it("should render facilities when data loads", async () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ facilities: mockFacilities }),
+      render(<Dashboard />);
+      expect(screen.getByText("Loading facilities...")).toBeInTheDocument();
     });
 
-    render(<Dashboard />);
+    it("should show error state when fetch fails", async () => {
+      mockFetch.mockResolvedValueOnce({ ok: false, json: async () => ({}) });
 
-    await waitFor(() => {
-      expect(screen.getByText("Tokyo Station")).toBeInTheDocument();
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        expect(screen.getByText("Error")).toBeInTheDocument();
+      });
     });
 
-    expect(screen.getByText("75.0 kW")).toBeInTheDocument(); // Current load
-    expect(screen.getByText("150 kW")).toBeInTheDocument(); // Total capacity
-  });
+    it("should handle network error gracefully", async () => {
+      mockFetch.mockRejectedValueOnce(new Error("Network error"));
 
-  it("should calculate progress bar width correctly", async () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ facilities: mockFacilities }),
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        expect(screen.getByText("Error")).toBeInTheDocument();
+      });
     });
 
-    render(<Dashboard />);
+    it("should render empty state when no facilities exist", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [] }),
+      });
 
-    await waitFor(() => {
-      const progressBar = document.querySelector(
-        "[data-testid='progress-fac-001']",
-      );
-      expect(progressBar).toHaveStyle("width: 50%"); // 75 / 150 = 50%
-    });
-  });
+      render(<Dashboard />);
 
-  it("should handle division by zero for progress bar", async () => {
-    const facilityWithZeroCapacity: NormalizedFacility = {
-      ...mockFacilities[0],
-      totalCapacityKw: 0,
-      currentLoadKw: 0,
-    };
-
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ facilities: [facilityWithZeroCapacity] }),
-    });
-
-    render(<Dashboard />);
-
-    await waitFor(() => {
-      const progressBar = document.querySelector(
-        "[data-testid='progress-fac-001']",
-      );
-      console.log("Progress bar:", progressBar);
-      console.log("Progress bar styles:", progressBar?.getAttribute("style"));
-      expect(progressBar).toBeInTheDocument();
-      expect(progressBar).toHaveStyle("width: 0%");
+      await waitFor(() => {
+        expect(screen.getByText("No facilities available")).toBeInTheDocument();
+      });
     });
   });
 
-  it("should show error state when fetch fails", async () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: false,
-      json: async () => ({}),
+  describe("facility rendering", () => {
+    it("should render multiple facilities correctly", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [mockFacility, mockFacility2] }),
+      });
+
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        expect(screen.getByText("Tokyo Station")).toBeInTheDocument();
+        expect(screen.getByText("Osaka Station")).toBeInTheDocument();
+      });
     });
 
-    render(<Dashboard />);
+    it("should render charger stats correctly", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [mockFacility] }),
+      });
 
-    await waitFor(() => {
-      expect(screen.getByText("Error")).toBeInTheDocument();
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        const availableCount = screen.getByTestId("available-fac-001");
+        expect(availableCount).toHaveTextContent("2");
+        const inUseCount = screen.getByTestId("inUse-fac-001");
+        expect(inUseCount).toHaveTextContent("1");
+        const offlineCount = screen.getByTestId("offline-fac-001");
+        expect(offlineCount).toHaveTextContent("0");
+        const maintenanceCount = screen.getByTestId("maintenance-fac-001");
+        expect(maintenanceCount).toHaveTextContent("0");
+      });
+    });
+
+    it("should link to facility detail page", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [mockFacility] }),
+      });
+
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        const link = screen.getByRole("link", { name: /View Sessions/i });
+        expect(link).toHaveAttribute("href", "/facilities/fac-001");
+      });
     });
   });
 
-  it("should link to facility detail page", async () => {
-    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ facilities: mockFacilities }),
+  describe("progress bar", () => {
+    it("should calculate progress bar width correctly", async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [mockFacility] }),
+      });
+
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        expect(screen.getByTestId("progress-fac-001")).toHaveStyle(
+          "width: 50%",
+        ); // 75/150
+      });
     });
 
-    render(<Dashboard />);
+    it("should handle division by zero", async () => {
+      const zeroCapacityFacility: NormalizedFacility = {
+        ...mockFacility,
+        totalCapacityKw: 0,
+        currentLoadKw: 0,
+      };
 
-    await waitFor(() => {
-      const link = screen.getByRole("link", { name: /View Sessions/i });
-      expect(link).toHaveAttribute("href", "/facilities/fac-001");
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ facilities: [zeroCapacityFacility] }),
+      });
+
+      render(<Dashboard />);
+
+      await waitFor(() => {
+        expect(screen.getByTestId("progress-fac-001")).toHaveStyle("width: 0%");
+      });
     });
   });
 });

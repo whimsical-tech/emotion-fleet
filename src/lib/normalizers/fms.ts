@@ -11,7 +11,7 @@ dayjs.extend(utc);
  * - Converts JST timestamps to UTC
  * - Converts Wh → kWh and W → kW
  * - Calculates duration in minutes
- * - Uses status field as source of truth (not endTime == null)
+ * - Uses status field as source of truth
  */
 export function normalizeFMSSession(
   raw: FMSChargingSession,
@@ -22,7 +22,6 @@ export function normalizeFMSSession(
   const startUtc = parseJSTtoUTC(raw.startTime);
   const endUtc = raw.endTime ? parseJSTtoUTC(raw.endTime) : null;
 
-  // Calculate duration only if session has ended
   const durationMinutes =
     endUtc && startUtc
       ? Math.round((endUtc.getTime() - startUtc.getTime()) / 60000)

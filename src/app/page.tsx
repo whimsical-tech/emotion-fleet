@@ -48,6 +48,16 @@ export default function Dashboard() {
     );
   }
 
+  if (facilities.length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.emptyState}>
+          <p>No facilities available</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -102,6 +112,7 @@ export default function Dashboard() {
                   <div className={styles.stat}>
                     <span className={styles.statLabel}>Available</span>
                     <span
+                      data-testid={`available-${facility.id}`}
                       className={`${styles.statNumber} ${styles.available}`}
                     >
                       {facility.chargerStats.available}
@@ -109,19 +120,26 @@ export default function Dashboard() {
                   </div>
                   <div className={styles.stat}>
                     <span className={styles.statLabel}>In Use</span>
-                    <span className={`${styles.statNumber} ${styles.inUse}`}>
+                    <span
+                      data-testid={`inUse-${facility.id}`}
+                      className={`${styles.statNumber} ${styles.inUse}`}
+                    >
                       {facility.chargerStats.inUse}
                     </span>
                   </div>
                   <div className={styles.stat}>
                     <span className={styles.statLabel}>Offline</span>
-                    <span className={`${styles.statNumber} ${styles.offline}`}>
+                    <span
+                      data-testid={`offline-${facility.id}`}
+                      className={`${styles.statNumber} ${styles.offline}`}
+                    >
                       {facility.chargerStats.offline}
                     </span>
                   </div>
                   <div className={styles.stat}>
                     <span className={styles.statLabel}>Maintenance</span>
                     <span
+                      data-testid={`maintenance-${facility.id}`}
                       className={`${styles.statNumber} ${styles.maintenance}`}
                     >
                       {facility.chargerStats.maintenance}

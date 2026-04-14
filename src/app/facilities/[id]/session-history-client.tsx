@@ -13,13 +13,13 @@ interface SessionHistoryClientProps {
   initialError: string | null;
 }
 
+dayjs.extend(utc);
+
 export default function SessionHistoryClient({
   initialSessions,
   facilityName,
   initialError,
 }: SessionHistoryClientProps) {
-  dayjs.extend(utc);
-
   const [loading, setLoading] = useState(false);
 
   const getStatusBadgeClass = (status: string) => {
@@ -124,22 +124,35 @@ export default function SessionHistoryClient({
               {initialSessions.map((session) => (
                 <tr key={session.id}>
                   <td className={styles.sessionId}>{session.id}</td>
+
                   <td>
                     <div className={styles.vehicleInfo}>
-                      <div className={styles.vehiclePlate}>
+                      <div
+                        className={styles.vehiclePlate}
+                        data-testid={`vehicle-plate-${session.id}`}
+                      >
                         {session.vehicleLicensePlate}
                       </div>
-                      <div className={styles.vehicleModel}>
+                      <div
+                        className={styles.vehicleModel}
+                        data-testid={`vehicle-model-${session.id}`}
+                      >
                         {session.vehicleModel}
                       </div>
                     </div>
                   </td>
                   <td>
                     <div className={styles.chargerInfo}>
-                      <div className={styles.chargerId}>
+                      <div
+                        className={styles.chargerId}
+                        data-testid={`charger-id-${session.id}`}
+                      >
                         {session.chargerId}
                       </div>
-                      <div className={styles.chargerModel}>
+                      <div
+                        className={styles.chargerModel}
+                        data-testid={`charger-model-${session.id}`}
+                      >
                         {session.chargerModel}
                       </div>
                     </div>
@@ -156,6 +169,7 @@ export default function SessionHistoryClient({
                       : "—"}
                   </td>
                   <td className={`${styles.energy} ${styles.alignRight}`}>
+                    {/* TBD: how should the number below be displayed? */}
                     {session.energyDeliveredKwh.toFixed(2)}
                   </td>
                   <td>

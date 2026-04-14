@@ -2,6 +2,8 @@ import { describe, it, expect } from "vitest";
 import { normalizeEMSFacility } from "./ems";
 import type { EMSFacility } from "@/lib/types";
 
+/* TODO: use a factory function */
+
 describe("normalizeEMSFacility", () => {
   const mockFacility: EMSFacility = {
     facility_id: "fac-001",
@@ -51,14 +53,14 @@ describe("normalizeEMSFacility", () => {
           model: "ChargePoint",
           max_power_kw: 150,
           status: "AVAILABLE",
-          current_power_kw: 10,
+          current_power_kw: 210,
           last_status_update: "2026-04-14T05:00:00Z",
         },
       ],
     };
 
     const result = normalizeEMSFacility(facilityWithChargers);
-    expect(result.currentLoadKw).toBe(130); // 120 + 10
+    expect(result.currentLoadKw).toBe(330); // 120 + 210
   });
 
   it("should handle null current_power_kw gracefully", () => {
