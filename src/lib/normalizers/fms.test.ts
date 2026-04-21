@@ -9,8 +9,9 @@ describe("parseJSTtoUTC", () => {
 
     expect(result).toBeInstanceOf(Date);
     // JST is UTC+9, so 14:30 JST = 05:30 UTC
-    expect(result?.getUTCHours()).toBe(5);
-    expect(result?.getUTCMinutes()).toBe(30);
+    expect(result).not.toBeNull(); // NEW LINE
+    expect(result!.getUTCHours()).toBe(5); // CHANGED LINE
+    expect(result!.getUTCMinutes()).toBe(30); // CHANGED LINE
   });
 
   it("should handle empty string", () => {
@@ -25,6 +26,9 @@ describe("parseJSTtoUTC", () => {
   it("should handle midnight JST", () => {
     const result = parseJSTtoUTC("2026-04-14 00:00:00 JST");
     expect(result).not.toBeNull();
+    expect(result!.getUTCDate()).toBe(13); // NEW LINE
+    // April is 3 because of Javascript zero-based index
+    expect(result!.getUTCMonth()).toBe(3); // NEW LINE
     expect(result!.getUTCHours()).toBe(15); // Previous day 15:00 UTC
     expect(result!.getUTCMinutes()).toBe(0);
   });

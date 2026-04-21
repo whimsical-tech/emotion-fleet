@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { NormalizedSession } from "@/lib/types";
 import Link from "next/link";
 import styles from "./session-history.module.css";
@@ -16,7 +16,7 @@ interface SessionHistoryClientProps {
 dayjs.extend(utc);
 
 export default function SessionHistoryClient({
-  initialSessions,
+  initialSessions, // NEW COMMENT: naming "initial" could be misleading due to ISR
   facilityName,
   initialError,
 }: SessionHistoryClientProps) {
@@ -36,6 +36,17 @@ export default function SessionHistoryClient({
         return styles.statusDefault;
     }
   };
+
+  /*
+  * NEW COMMENT: filtering is happening on every render, useMemo would be better.
+  const stats = useMemo(() => {
+    return {
+      completed: initialSessions.filter((s) => s.status === "completed").length,
+      inProgress: initialSessions.filter((s) => s.status === "in_progress")
+        .length,
+    };
+  }, [initialSessions]);
+  */
 
   const completedCount = initialSessions.filter(
     (s) => s.status === "completed",

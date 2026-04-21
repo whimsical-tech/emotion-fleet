@@ -74,7 +74,7 @@ export function mapAllFacilitiesWithSessions(
  * Find raw EMS facility by normalized ID
  * The normalized id is the same as the raw facility_id
  */
-export function findEMSFacilityById(
+export function findEMSFacilityById( // NEW COMMENT: this should probably be in a helpers/utils file
   emsFacilities: EMSFacility[],
   normalizedId: string,
 ): EMSFacility | undefined {
